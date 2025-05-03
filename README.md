@@ -34,6 +34,9 @@ MIT License
 
 ---
 This is a part of a larger project - Summon. Find out more about the current status of the project through:
-`https://akhandyaduvanshi.in/summon` - Github Page for frontend only
-`https://summon.akhandyaduvanshi.in/` - Low Uptime
+
+`https://akhandyaduvanshi.in/summon` - Github Page for frontend only.
+
+`https://summon.akhandyaduvanshi.in/` - Personal server, Low Uptime.
+
 *Summon is a work in progress. Contributions and ideas are welcome!*
