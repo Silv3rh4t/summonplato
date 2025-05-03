@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Summon Debug Console</title>
+  <style>
+    body { font-family: monospace; background: #0b0c10; color: #f8f8f2; padding: 2rem; }
+    .section { margin-bottom: 1.5rem; border-left: 4px solid #444; padding-left: 1rem; }
+    .label { font-weight: bold; color: #50fa7b; }
+    .value { white-space: pre-wrap; margin-top: 0.2rem; }
+    input, button { font-family: monospace; padding: 0.5rem; background: #1c1c1c; color: #f8f8f2; border: 1px solid #444; }
+    button { cursor: pointer; margin-left: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h2>🧪 Summon Debug Console</h2>
+  <form id="chat-form">
+    <input type="text" id="chat-input" placeholder="Ask Plato something..." size="60" required />
+    <button type="submit">Send</button>
+  </form>
+
+  <div class="section">
+    <div class="label">1. User Message</div>
+    <div id="user-msg" class="value">—</div>
+  </div>
+  <div class="section">
+    <div class="label">2. Retrieved Keywords</div>
+    <div id="retrieved-keywords" class="value">—</div>
+  </div>
+  <div class="section">
+    <div class="label">3. Final Prompt Sent</div>
+    <div id="final-prompt" class="value">—</div>
+  </div>
+  <div class="section">
+    <div class="label">4. Plato’s Reply</div>
+    <div id="plato-reply" class="value">—</div>
+  </div>
+
+  <script>
+    const form = document.getElementById('chat-form');
+    const input = document.getElementById('chat-input');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const question = input.value.trim();
+      if (!question) return;
+
+      document.getElementById('user-msg').textContent = question;
+      document.getElementById('retrieved-keywords').textContent = "…";
+      document.getElementById('final-prompt').textContent = "…";
+      document.getElementById('plato-reply').textContent = "…";
+
+      const res = await fetch('/debug-ask', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ question })
+      });
+
+      const data = await res.json();
+
+      document.getElementById('retrieved-keywords').textContent = data.keywords || "None";
+      document.getElementById('final-prompt').textContent = data.prompt;
+      document.getElementById('plato-reply').textContent = data.reply;
+      input.value = "";
+    });
+  </script>
+</body>
+</html>

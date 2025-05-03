@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Summon – Chat with Plato</title>
+  <link rel="icon" type="image/png" href="/static/fav.ico">
+  <link
+    href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;700&family=Montserrat:wght@400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/static/index.css">
+</head>
+
+<body>
+  <div class="chat-container" id="chat-container" hidden>
+    <div class="chat-header">
+      <span class="chat-title">Marcus Aurelius</span>
+      <span class="chat-sub">~150 BCE</span>
+    </div>
+    <div class="column-accent"></div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="message plato">Greetings, seeker of truth. You have summoned Marcus Aurelius to shed light on your deepest questions—what matter of wisdom shall we examine together?</div>
+    </div>
+    <form class="chat-input" id="chat-form" autocomplete="off">
+      <input type="text" id="chat-input" placeholder="Summon your question..." required />
+      <button type="submit" title="Send"><span>&#9658;</span></button>
+    </form>
+  </div>
+  <script src="/static/index.js"></script>
+</body>
+
+</html>
